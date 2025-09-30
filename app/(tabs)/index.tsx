@@ -6,8 +6,11 @@ import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
+import { useState } from 'react';
+import { Sheet, Text } from 'tamagui';
 
 export default function HomeScreen() {
+  const [sheetOpen, setSheetOpen] = useState(false);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -74,6 +77,14 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen} modal snapPoints={[90]} dismissOnSnapToBottom>
+      <Sheet.Overlay />
+      <Sheet.Handle />
+      <Sheet.Frame flex={1} justify="center" items="center" gap="$5">
+        <Text>Hello world</Text>
+      </Sheet.Frame>
+    </Sheet>
     </ParallaxScrollView>
   );
 }
