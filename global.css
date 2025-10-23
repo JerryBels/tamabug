@@ -1,0 +1,142 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+/* Tailwind v4: Custom breakpoints and font sizes */
+@theme {
+  --breakpoint-sm: 380px;
+  --breakpoint-md: 420px;
+  --breakpoint-lg: 680px;
+  --breakpoint-xl: 1024px;
+
+  /* Tailwind v4 uses --text-* tokens for font sizes */
+  /* Set the scale in rem. Inline rem => dp is controlled via metro inlineRem */
+  --text-xxs: 0.875rem;
+  --text-xs: 1rem;
+  --text-sm: 1.25rem;
+  --text-base: 1.5rem; /* default for < sm */
+  --text-lg: 1.75rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3rem;
+}
+
+@media (max-width: 379px) {
+  :root {
+    /* Override font scale for < sm screens */
+    --text-xxs: 0.65rem;
+    --text-xs: 0.875rem;
+    --text-sm: 1rem;
+    --text-base: 1.25rem;
+    --text-lg: 1.5rem;
+    --text-xl: 1.75rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.5rem;
+  }
+}
+
+/* 
+  🎨 DESIGN SYSTEM - Single Source of Truth
+  
+  Change your colors here! These CSS variables are used throughout your app.
+  The tailwind.config.js references these, so you only need to edit here.
+*/
+
+@layer base {
+  :root {
+    font-size: 24px;
+
+    /* Core colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    /* Component colors */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* Brand colors */
+    /* #D87739 -> hsl(23 67% 53%) approx */
+    --primary: 23 67% 53%;
+    --primary-foreground: 0 0% 98%;
+    /* #BF7FF7 -> hsl(272 88% 73%) approx */
+    --secondary: 272 88% 73%;
+    --secondary-foreground: 0 0% 9%;
+
+    /* Tailwind v4 color tokens used by text-primary/bg-primary etc. */
+    --color-primary: hsl(var(--primary));
+    --color-secondary: hsl(var(--secondary));
+
+    /* UI states */
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+
+    /* Borders & inputs */
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 63%;
+
+    /* Border radius */
+    --radius: 0.625rem;
+
+    /* Charts (if needed) */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark:root {
+    /* Core colors */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Component colors */
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Brand colors (keep brand constant in dark, adjust foregrounds as needed) */
+    --primary: 23 67% 53%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 272 88% 73%;
+    --secondary-foreground: 0 0% 9%;
+
+    /* Tailwind v4 color tokens */
+    --color-primary: hsl(var(--primary));
+    --color-secondary: hsl(var(--secondary));
+
+    /* UI states */
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 70.9% 59.4%;
+
+    /* Borders & inputs */
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 300 0% 45%;
+
+    /* Charts */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+/* Utility aliases for brand colors (ensures text-primary/text-secondary work) */
+@layer utilities {
+  .text-primary { color: hsl(var(--primary)); }
+  .text-secondary { color: hsl(var(--secondary)); }
+}
